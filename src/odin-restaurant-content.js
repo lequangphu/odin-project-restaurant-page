@@ -1,30 +1,60 @@
-// Function to create and return the home page content
-function createHomePage() {
-  const content = document.createElement('div');
-  content.classList.add('home-page');
+// Home tab content
+const createHomeContent = () => {
+  const homeDiv = document.createElement('div');
+  homeDiv.classList.add('home-content');
 
-  const header = document.createElement('h1');
-  header.textContent = 'Welcome to Odin Restaurant';
-  content.appendChild(header);
+  const title = document.createElement('h1');
+  title.textContent = 'Welcome to Odin Restaurant';
+  homeDiv.appendChild(title);
 
   const description = document.createElement('p');
   description.textContent = 'Experience the finest Nordic cuisine in a cozy atmosphere.';
-  content.appendChild(description);
+  homeDiv.appendChild(description);
 
-  const specialties = document.createElement('ul');
-  specialties.innerHTML = `
-    <li>Traditional Scandinavian dishes</li>
-    <li>Fresh, locally-sourced ingredients</li>
-    <li>Exquisite wine selection</li>
-  `;
-  content.appendChild(specialties);
+  return homeDiv;
+};
 
-  const cta = document.createElement('button');
-  cta.textContent = 'Make a Reservation';
-  content.appendChild(cta);
+// Menu tab content
+const createMenuContent = () => {
+  const menuDiv = document.createElement('div');
+  menuDiv.classList.add('menu-content');
 
-  return content;
-}
+  const title = document.createElement('h2');
+  title.textContent = 'Our Menu';
+  menuDiv.appendChild(title);
 
-// Export the function to be used in index.js
-export default createHomePage;
+  const menuItems = [
+    { name: 'Viking Feast Platter', price: '$25' },
+    { name: 'Odin\'s Salmon', price: '$22' },
+    { name: 'Thor\'s Thunder Burger', price: '$18' },
+  ];
+
+  const menuList = document.createElement('ul');
+  menuItems.forEach(item => {
+    const listItem = document.createElement('li');
+    listItem.textContent = `${item.name} - ${item.price}`;
+    menuList.appendChild(listItem);
+  });
+
+  menuDiv.appendChild(menuList);
+  return menuDiv;
+};
+
+// About tab content
+const createAboutContent = () => {
+  const aboutDiv = document.createElement('div');
+  aboutDiv.classList.add('about-content');
+
+  const title = document.createElement('h2');
+  title.textContent = 'About Odin Restaurant';
+  aboutDiv.appendChild(title);
+
+  const story = document.createElement('p');
+  story.textContent = 'Odin Restaurant was founded in 2023 with a passion for bringing authentic Nordic flavors to your table. Our chefs use traditional techniques and locally-sourced ingredients to create unforgettable dining experiences.';
+  aboutDiv.appendChild(story);
+
+  return aboutDiv;
+};
+
+// Export the modules
+export { createHomeContent, createMenuContent, createAboutContent };
